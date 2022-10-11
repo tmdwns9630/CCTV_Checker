@@ -28,3 +28,12 @@ a {
     background: black;
   }
 }
+
+/* @apply로 테일와일드 적용된다. 그대로 className에 속성 넣듯이 넣으면 적용된다. */
+.sunmoon_btn {
+  @apply bg-[#77C9FD] hover:bg-[#8BE8FA]  dark:bg-[#27443C] dark:hover:bg-[#376b5c] py-4 px-5 rounded-lg;
+}
+
+.setting_input {
+  @apply font-bold text-lg ring-2  px-2 h-12 ring-gray-700  text-gray-800 dark:bg-[#121212] dark:ring-gray-200 rounded-xl dark:text-slate-200;
+}

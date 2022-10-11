@@ -1,19 +1,15 @@
 import type { NextPage } from "next";
 import Layout from "../components/Layout";
-import Map from "../components/map";
 // import Head from "next/head";
 // import Image from "next/image";
 // import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+const timeline: NextPage = () => {
   return (
-    <Layout title="CCTV MAP">
-      <div>
-        <div>홈페이지</div>
-        <Map />
-      </div>
+    <Layout title="TimeLine">
+      <div>타임 라인 페이지</div>
     </Layout>
   );
 };
 
-export default Home;
+export default timeline;

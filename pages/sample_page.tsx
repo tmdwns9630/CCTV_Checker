@@ -1,19 +1,17 @@
 import type { NextPage } from "next";
 import Layout from "../components/Layout";
-import Map from "../components/map";
 // import Head from "next/head";
 // import Image from "next/image";
 // import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+const sample_page: NextPage = () => {
   return (
     <Layout title="CCTV MAP">
       <div>
-        <div>홈페이지</div>
-        <Map />
+        <div>페이지 샘플</div>
       </div>
     </Layout>
   );
 };
 
-export default Home;
+export default sample_page;
