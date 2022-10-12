@@ -13,7 +13,7 @@ declare global {
 }
 
 export default function Map({ latitude, longitude }: MapProps) {
-  console.log("map 로딩");
+  //console.log("map 로딩");
 
   useEffect(() => {
     const mapScript = document.createElement("script");
@@ -57,3 +57,4 @@ export default function Map({ latitude, longitude }: MapProps) {
 }
 
 //map 컨테이너만 해결하면 될듯
+//쉿팔 됐다아아ㅏ아아아아아
