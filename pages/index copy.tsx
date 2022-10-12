@@ -7,9 +7,9 @@ import { cls } from "../components/utils";
 import React, { FC } from "react";
 
 const Home: NextPage = (props) => {
-  const Map: FC = () => {
-    return;
-  };
+  // const Map: FC = () => {
+  //   return;
+  // };
 
   return (
     <Layout title="CCTV MAP">
