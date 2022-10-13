@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         console.log("==============");
         console.log(cctvdata);
       });
-  }, []);
+  }, [cctvdata]);
   return (
     <Layout title="CCTV MAP">
       <div>
