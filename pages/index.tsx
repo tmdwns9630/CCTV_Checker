@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import Map from "../components/Map";
 // import Head from "next/head";
@@ -17,11 +17,12 @@ const Home: NextPage = () => {
       .then((res) => res.json())
       .then((json) => {
         //console.log(json.cctvS);
-        setCctvdata(json.cctvS);
-        console.log("==============");
-        console.log(cctvdata);
+        setCctvdata(() => json.cctvS);
+        //setCctvdata(json.cctvS);
+        console.log("======123========");
+        //console.log(cctvdata);
       });
-  }, [cctvdata]);
+  }, []);
   return (
     <Layout title="CCTV MAP">
       <div>
