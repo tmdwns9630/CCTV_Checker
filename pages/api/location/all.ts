@@ -24,12 +24,22 @@ export default async function handler(
   }
   try {
     //console.log(req.query);
-    const cctvS = await client.cCTV_DATA.findMany();
+    const cctvS = await client.cCTV_DATA.findMany({
+      cursor: { id: "6346d56a04d8d08df2cd4a39" },
+      take: 13,
+    });
+
     console.log("======================");
     //console.log(cctvS.filter((ele, idx) => ele.num < 5));
-    const ResCCTVonFive = cctvS.filter((ele, idx) => ele.num <= 5);
-    //console.log(ResCCTVonFive);
+    //const ResCCTVonFive = cctvS.filter((ele, idx) => ele.num <= 5);
     //num 5 이하의 cctv 정보만 로드하였음.
+    // const ResCCTVonFive = cctvS.filter(
+    //   (ele, idx) => ele.num > 0 && ele.num <= 10
+    // ); //테스트를 위해 2곳만 나오게 함.
+    //console.log(ResCCTVonFive);
+
+    const ResCCTVonFive = cctvS;
+    //console.log(ResCCTVonFive);
     res.status(200).json({
       ok: true,
       message: "cctv데이터를 로드했습니다.",
