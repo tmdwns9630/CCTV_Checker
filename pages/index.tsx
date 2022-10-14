@@ -6,21 +6,34 @@ import Map from "../components/Map";
 // import Image from "next/image";
 // import styles from "../styles/Home.module.css";
 import { CCTV_DATA } from "@prisma/client";
+import useCurrentPosition from "../components/useCurrentPosition";
 
 const Home: NextPage = () => {
   const [cctvdata, setCctvdata] = useState<CCTV_DATA[]>([]);
-  // const [cctvNum, setCctvNum] = useState("");
-  // const [cctvLocation, setCctvLocation] = useState("");
 
+  const geolocationOptions = {
+    enableHighAccuracy: true,
+    timeout: 1000 * 60 * 1, // 1 min (1000 ms * 60 sec * 1 minute = 60 000ms)
+    maximumAge: 1000 * 3600 * 24, // 24 hour
+  };
+
+  const showLatLong = () => {
+    const { location: currentLocation, error: currentError } =
+      useCurrentPosition(geolocationOptions);
+    useEffect(() => {
+      console.log("showLatLong 컴포넌트 렌더링");
+    }, []);
+
+    return <div>{(location.latitude, location.longitude)}</div>;
+  };
   useEffect(() => {
     fetch("/api/location/all")
       .then((res) => res.json())
       .then((json) => {
         //console.log(json.cctvS);
-        setCctvdata(() => json.cctvS);
         //setCctvdata(json.cctvS);
+        setCctvdata(() => json.cctvS);
         console.log("======123========");
-        //console.log(cctvdata);
       });
   }, []);
   return (

@@ -2,6 +2,7 @@ import { CCTV_DATA } from "@prisma/client";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { markerdata } from "../components/tempdata/marker";
+
 interface MapProps {
   latitude: number;
   longitude: number;
@@ -17,8 +18,14 @@ export default function Map({ latitude, longitude }: MapProps) {
   //console.log("map 로딩");
   const [cctvdata, setCctvdata] = useState<CCTV_DATA[]>([]);
 
-  //DB 데이터 로드-----------------------------
+  function GeoLo() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {});
+    } //죠죠..! 내 마지막 파문이다..!
+  }
+
   useEffect(() => {
+    //DB 데이터 로드-----------------------------
     fetch("/api/location/all")
       .then((res) => res.json())
       .then((json) => {
@@ -66,15 +73,15 @@ export default function Map({ latitude, longitude }: MapProps) {
         //   });
         // }); //다중마커
 
-        //다중 마커 세팅2 - DB 데이터를 마커로 표시
-        cctvdata.forEach((ele) => {
-          new window.kakao.maps.Marker({
-            map: map, //마커가 표시될 지도
-            position: new window.kakao.maps.LatLng(ele.latitude, ele.longitude), //마커가 표시될 위치
-            title: ele.Range, //촬영방면
-          });
-          console.log(`촬영방면 : ${ele.Range}`);
-        }); //다중마커2
+        // //다중 마커 세팅2 - DB 데이터를 마커로 표시
+        // cctvdata.forEach((ele) => {
+        //   new window.kakao.maps.Marker({
+        //     map: map, //마커가 표시될 지도
+        //     position: new window.kakao.maps.LatLng(ele.latitude, ele.longitude), //마커가 표시될 위치
+        //     title: ele.Range, //촬영방면
+        //   });
+        //   console.log(`촬영방면 : ${ele.Range}`);
+        // }); //다중마커2
       });
     };
     mapScript.addEventListener("load", onLoadKakaoMap);
