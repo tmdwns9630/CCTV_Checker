@@ -17,15 +17,15 @@ const Home: NextPage = () => {
     maximumAge: 1000 * 3600 * 24, // 24 hour
   };
 
-  const showLatLong = () => {
-    const { location: currentLocation, error: currentError } =
-      useCurrentPosition(geolocationOptions);
-    useEffect(() => {
-      console.log("showLatLong 컴포넌트 렌더링");
-    }, []);
+  // const showLatLong = () => {
+  //   const { location: currentLocation, error: currentError } =
+  //     useCurrentPosition(geolocationOptions);
+  //   useEffect(() => {
+  //     console.log("showLatLong 컴포넌트 렌더링");
+  //   }, []);
 
-    return <div>{(location.latitude, location.longitude)}</div>;
-  };
+  //   return <div>{(location.latitude, location.longitude)}</div>;
+  // };
   useEffect(() => {
     fetch("/api/location/all")
       .then((res) => res.json())
@@ -44,8 +44,8 @@ const Home: NextPage = () => {
 
         {cctvdata.map((cctv, idx) => (
           <div key={idx} className="flex space-x-3">
-            <div>CCTV 번호 : {cctv.num}</div>
-            <div>CCTV 위치 : {cctv.detail_address}</div>
+            {/* <div>CCTV 번호 : {cctv.num}</div>
+            <div>CCTV 위치 : {cctv.detail_address}</div> */}
           </div>
         ))}
       </div>
