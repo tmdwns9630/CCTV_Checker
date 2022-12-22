@@ -51,11 +51,12 @@ export default function Map({ latitude, longitude }: MapProps) {
         const circle = makeCircle(ele.latitude, ele.longitude);
         console.log(`출력마커:${ele.num}`);
         circle.setMap(map);
+        console.log("마커 로드 완료");
       }
     }); //다중마커2
-    console.log("마커 로드 완료");
   }
 
+  //초반 로드 때 cctvs에 api 값이 안들어가나?
   useEffect(() => {
     //DB 데이터 로드-----------------------------
     fetch("/api/location/all")
@@ -64,9 +65,22 @@ export default function Map({ latitude, longitude }: MapProps) {
         //console.log(json.cctvS);
         //setCctvdata(json.cctvS);
         setCctvdata(() => json.cctvS);
-        //console.log("======cctvdata 출력========");
-        //console.log(cctvdata);
+        console.log("======cctvdata 출력========");
+        console.log(cctvdata);
       });
+  }, [latitude, longitude]); //useEffect
+
+  useEffect(() => {
+    //DB 데이터 로드-----------------------------
+    // fetch("/api/location/all")
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     //console.log(json.cctvS);
+    //     //setCctvdata(json.cctvS);
+    //     setCctvdata(() => json.cctvS);
+    //     console.log("======cctvdata 출력========");
+    //     console.log(cctvdata);
+    //   });
     //DB 데이터 로드----------------------------------
 
     const mapScript = document.createElement("script");

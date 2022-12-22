@@ -29,16 +29,19 @@ export default async function handler(
     //   take: 13,
     // });
     const cctvS = await client.cCTV_DATA.findMany();
-    //console.log("======================");
+    console.log("======================");
     //console.log(cctvS.filter((ele, idx) => ele.num < 5));
-    //const ResCCTVonFive = cctvS.filter((ele, idx) => ele.num <= 5);
-    //num 5 이하의 cctv 정보만 로드하였음.
+
+    const ResCCTVonFive = cctvS.filter((ele, idx) => ele.num <= 10); //여기서 DB 내용을 한정하여 출력.
+    // const ResCCTVonFive = cctvS; // 여기는 전체 출력
+
+    // num 5 이하의 cctv 정보만 로드하였음.
     // const ResCCTVonFive = cctvS.filter(
     //   (ele, idx) => ele.num > 0 && ele.num <= 10
     // ); //테스트를 위해 2곳만 나오게 함.
-    //console.log(ResCCTVonFive);
+    console.log(ResCCTVonFive);
 
-    const ResCCTVonFive = cctvS;
+    //
     //console.log(ResCCTVonFive);
     res.status(200).json({
       ok: true,

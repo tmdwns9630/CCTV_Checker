@@ -22,16 +22,17 @@ const Home: NextPage = () => {
   }, []);
   return (
     <Layout title="CCTV MAP">
-      <div>
-        <div>홈페이지_</div>
+      <div className="flex flex-col items-center">
+        <div>홈페이지</div>
         <Map latitude={36.7961} longitude={127.0697}></Map>
-
-        {cctvdata.map((cctv, idx) => (
-          <div key={idx} className="flex space-x-3">
-            <div>CCTV 번호 : {cctv.num}</div>
-            <div>CCTV 위치 : {cctv.detail_address}</div>
-          </div>
-        ))}
+        <div>
+          {cctvdata.map((cctv, idx) => (
+            <div key={idx} className="flex space-x-3">
+              <div>CCTV 번호 : {cctv.num}</div>
+              <div>CCTV 위치 : {cctv.detail_address}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </Layout>
   );
